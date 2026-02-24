@@ -222,8 +222,8 @@ git push -u origin main
 
 ## 👨‍💻 Autor
 
-Desarrollado por: **[Tu Nombre]**
-Asignatura: Desarrollo Web con Laravel
+Desarrollado por: **Brando Andrade**
+Asignatura: Desarrollo Web PHP con Laravel
 Año: 2026
 
 ---
