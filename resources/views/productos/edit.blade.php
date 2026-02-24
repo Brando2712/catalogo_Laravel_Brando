@@ -41,6 +41,6 @@
             @enderror
         </div>
 
-        <button class="btn" type="submit">Actualizar</button>
+        <button class="btn" type="submit">Actualizar Producto</button>
     </form>
 @endsection

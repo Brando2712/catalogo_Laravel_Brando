@@ -40,6 +40,6 @@
             @enderror
         </div>
 
-        <button class="btn" type="submit">Guardar</button>
+        <button class="btn" type="submit">Guardar Producto</button>
     </form>
 @endsection
