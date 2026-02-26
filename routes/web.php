@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Crea todas las rutas para el CRUD de productos automaticamente
 Route::resource('productos', ProductoController::class);

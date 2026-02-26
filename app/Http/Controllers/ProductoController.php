@@ -12,11 +12,29 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productos = Producto::orderByDesc('id')->paginate(10);
+        $estado = $request->query('estado', 'activo');
+        $buscar = $request->query('buscar');
 
-        return view('productos.index', compact('productos'));
+        $query = Producto::query();
+
+        if ($estado !== 'todos') {
+            $query->where('estado', $estado);
+        }
+
+        if (!empty($buscar)) {
+            $query->where(function ($q) use ($buscar) {
+                $q->where('nombre', 'like', "%{$buscar}%")
+                    ->orWhere('descripcion', 'like', "%{$buscar}%");
+            });
+        }
+
+        $productos = $query->orderByDesc('id')
+            ->paginate(10)
+            ->appends($request->only('estado', 'buscar'));
+
+        return view('productos.index', compact('productos', 'estado', 'buscar'));
     }
 
     /**
@@ -42,6 +60,7 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'estado' => 'required|string|in:activo,inactivo',
         ]);
 
         Producto::create($data);
@@ -86,6 +105,7 @@ class ProductoController extends Controller
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric|min:0',
             'stock' => 'required|integer|min:0',
+            'estado' => 'required|string|in:activo,inactivo',
         ]);
 
         $producto->update($data);
@@ -102,7 +122,7 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        $producto->delete();
+        $producto->update(['estado' => 'inactivo']);
 
         return redirect()->route('productos.index')
             ->with('success', 'Producto eliminado correctamente.');

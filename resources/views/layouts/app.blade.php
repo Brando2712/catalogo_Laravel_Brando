@@ -17,7 +17,7 @@
         .alert-success { background: #dcfce7; color: #166534; }
         .form-group { margin-bottom: 12px; }
         label { display: block; margin-bottom: 4px; font-weight: bold; }
-        input[type="text"], input[type="number"], textarea { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        input[type="text"], input[type="number"], textarea, select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
         .error { color: #b91c1c; font-size: 0.9em; }
     </style>
 </head>

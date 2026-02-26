@@ -7,10 +7,6 @@
 
     <table>
         <tr>
-            <th>ID</th>
-            <td>{{ $producto->id }}</td>
-        </tr>
-        <tr>
             <th>Nombre</th>
             <td>{{ $producto->nombre }}</td>
         </tr>
@@ -25,6 +21,10 @@
         <tr>
             <th>Stock</th>
             <td>{{ $producto->stock }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ ucfirst($producto->estado) }}</td>
         </tr>
         <tr>
             <th>Creado</th>

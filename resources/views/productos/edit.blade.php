@@ -41,6 +41,17 @@
             @enderror
         </div>
 
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select id="estado" name="estado" required>
+                <option value="activo" {{ old('estado', $producto->estado) === 'activo' ? 'selected' : '' }}>Activo</option>
+                <option value="inactivo" {{ old('estado', $producto->estado) === 'inactivo' ? 'selected' : '' }}>Inactivo</option>
+            </select>
+            @error('estado')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
+
         <button class="btn" type="submit">Actualizar Producto</button>
     </form>
 @endsection

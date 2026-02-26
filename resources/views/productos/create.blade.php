@@ -40,6 +40,8 @@
             @enderror
         </div>
 
+        <input type="hidden" name="estado" value="activo">
+
         <button class="btn" type="submit">Guardar Producto</button>
     </form>
 @endsection
